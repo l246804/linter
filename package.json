@@ -24,18 +24,18 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
+      "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
     "./**/*": {
       "types": "./**/*.d.ts",
-      "import": "./**/*.mjs",
+      "import": "./**/*.js",
       "require": "./**/*.cjs"
     },
     "./package.json": "./package.json"
   },
   "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "CHANGELOG.md",
