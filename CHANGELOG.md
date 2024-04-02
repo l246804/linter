@@ -1,5 +1,12 @@
 
 
+## [1.2.3](https://github.com/l246804/plop-generators/compare/v1.2.2...v1.2.3) (2024-04-02)
+
+
+### Bug fixes
+
+* 🐛 修复构建产物后缀名与 package.json 定义 exports 不匹配 ([d8a3c3c](https://github.com/l246804/plop-generators/commit/d8a3c3cdc358797c7daaaeef6ce6e06b1512ad24))
+
 ## [1.2.2](https://github.com/l246804/plop-generators/compare/v1.2.1...v1.2.2) (2024-03-19)
 
 
