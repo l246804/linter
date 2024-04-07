@@ -1,5 +1,12 @@
 
 
+## [1.2.4](https://github.com/l246804/plop-generators/compare/v1.2.3...v1.2.4) (2024-04-07)
+
+
+### Chores
+
+* 🤖 优化 vscode.settings 模板 ([2e3c454](https://github.com/l246804/plop-generators/commit/2e3c45454bf3ccff567e8e5d6c13005223d92beb))
+
 ## [1.2.3](https://github.com/l246804/plop-generators/compare/v1.2.2...v1.2.3) (2024-04-02)
 
 
