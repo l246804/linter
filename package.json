@@ -1,7 +1,7 @@
 {
   "name": "@rhao/plop-generators",
   "type": "module",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Plop generators.",
   "author": "RayHao <https://github.com/l246804>",
   "license": "MIT",

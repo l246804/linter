@@ -1,5 +1,12 @@
 
 
+## [1.2.6](https://github.com/l246804/plop-generators/compare/v1.2.5...v1.2.6) (2024-05-07)
+
+
+### Chores
+
+* 🤖 优化模板配置 ([72b8ea1](https://github.com/l246804/plop-generators/commit/72b8ea1420101dec1105bd87f967b6676634efff))
+
 ## [1.2.5](https://github.com/l246804/plop-generators/compare/v1.2.4...v1.2.5) (2024-04-09)
 
 
