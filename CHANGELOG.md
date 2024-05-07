@@ -1,5 +1,12 @@
 
 
+## [1.2.7](https://github.com/l246804/plop-generators/compare/v1.2.6...v1.2.7) (2024-05-07)
+
+
+### Bug fixes
+
+* 🐛 修复 vite 模板报错 ([5454328](https://github.com/l246804/plop-generators/commit/54543283651a7238f4844fd138c78e1c3c639d2d))
+
 ## [1.2.6](https://github.com/l246804/plop-generators/compare/v1.2.5...v1.2.6) (2024-05-07)
 
 
