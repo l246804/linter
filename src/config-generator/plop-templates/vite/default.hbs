@@ -13,6 +13,11 @@ import pkg from './package.json'
 const esmExt = '.js'
 const cjsExt = '.cjs'
 
+// 代码压缩
+const minify = false
+// 代码树摇
+const treeshake = true
+
 // 输出目录
 const outDir = resolve(__dirname, 'dist')
 
@@ -26,7 +31,7 @@ function genExternals() {
   return [
     /^node(:.+)?$/,
     ...new Set([...Object.keys(peerDependencies), ...Object.keys(dependencies)]),
-  ].map((p) => new RegExp(`^${p}$|^${p}/.+`)) as ExternalOption
+  ].map((p) => p instanceof RegExp ? p : new RegExp(`^${p}$|^${p}/.+`)) as ExternalOption
 }
 
 // 生成模块输出配置
@@ -43,6 +48,8 @@ function genOutput(format: 'cjs' | 'esm') {
       `${/node_modules/.test(info.name) ? info.name.split('node_modules/').at(-1)! : '[name]'}${
         format === 'esm' ? esmExt : cjsExt
       }`,
+    // 导出模式
+    exports: 'named',
   } as OutputOptions
 }
 
@@ -67,8 +74,6 @@ function genUMDOutput() {
     },
     // 入口文件名
     entryFileNames: `${pkgName.replace(/\.js$/, '')}.min.js`,
-    // 导出模式
-    exports: 'named',
   } as OutputOptions
 }
 
@@ -77,19 +82,16 @@ export default defineConfig(() => {
   return {
     build: {
       outDir,
-      minify: false,
+      minify,
       sourcemap: true,
       lib: {
         entry: entryFile,
       },
       rollupOptions: {
-        treeshake: false,
+        treeshake,
         external: genExternals(),
         output: [genOutput('esm'), genOutput('cjs'){{#if umd}}, genUMDOutput(){{/if}}],
       },
-    },
-    esbuild: {
-      minifySyntax: false,
     },
     resolve: {
       alias: {
