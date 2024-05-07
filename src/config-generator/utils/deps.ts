@@ -4,9 +4,9 @@ const DEP_VERSION_MAP: Recordable<string> = {
   '@changesets/cli': '^2',
 
   'husky': '^9',
-  '@commitlint/cli': '^18',
-  '@commitlint/types': '^18',
-  '@commitlint/config-conventional': '^18',
+  '@commitlint/cli': '^19',
+  '@commitlint/types': '^19',
+  '@commitlint/config-conventional': '^19',
 
   'commitizen': '^4',
   'git-cz': '^4',
@@ -15,7 +15,7 @@ const DEP_VERSION_MAP: Recordable<string> = {
 
   'typescript': '^5',
 
-  'eslint': '^8',
+  'eslint': '^9',
   '@antfu/eslint-config': '^2',
   'prettier': '^3',
 

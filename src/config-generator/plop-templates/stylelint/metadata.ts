@@ -19,11 +19,23 @@ export default defineMetadata({
       name: 'lang',
       message: 'Select style lang:',
       choices: [
-        { checked: true, name: 'css', value: 'css' },
+        { name: 'css', value: 'css' },
         { name: 'less', value: 'less' },
         { name: 'scss', value: 'scss' },
       ],
-      default: 'css',
+      default: () => {
+        const langs = new Set<string>()
+
+        pushLang('less')
+        pushLang('scss')
+        pushLang('sass', 'scss')
+
+        function pushLang(lang: string, realLang = lang) {
+          isPackageExists(lang) && langs.add(realLang)
+        }
+
+        return langs.size === 0 || langs.size > 1 ? 'css' : [...langs][0]
+      },
     },
     {
       type: 'confirm',

@@ -22,20 +22,11 @@ const entryFile = 'src/index'
 
 // 生成外部依赖配置
 function genExternals() {
+  const { peerDependencies = {}, dependencies = {} } = pkg as any
   return [
-    ...new Set([
-      // Node 依赖
-      /^node(:.+)?$/,
-
-      // 预装依赖
-      // @ts-expect-error
-      ...Object.keys(pkg.peerDependencies || {}),
-
-      // 生产依赖
-      // @ts-expect-error
-      ...Object.keys(pkg.dependencies || {}),
-    ]),
-  ] as ExternalOption
+    /^node(:.+)?$/,
+    ...new Set([...Object.keys(peerDependencies), ...Object.keys(dependencies)]),
+  ].map((p) => new RegExp(`^${p}$|^${p}/.+`)) as ExternalOption
 }
 
 // 生成模块输出配置

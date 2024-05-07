@@ -1,29 +1,30 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "jsx": "preserve",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "useDefineForClassFields": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
     {{#if node}}
     "types": ["node"],
     {{/if}}
     "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "removeComments": false,
-    "noEmit": true,
-    "importHelpers": false,
-    "downlevelIteration": true,
-    "isolatedModules": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "downlevelIteration": true,
+    "importHelpers": false,
+    "noEmit": true,
+    "removeComments": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
     "skipLibCheck": true
-  }
+  },
+  "include": ["src"]
 }

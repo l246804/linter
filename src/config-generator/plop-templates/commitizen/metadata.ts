@@ -1,6 +1,7 @@
 import { resolve } from 'node:path'
 import { cwd } from 'node:process'
 import type { Actions } from 'node-plop'
+import { $ } from 'execa'
 import { defineMetadata } from '../../utils/template'
 import { $dir } from '@/utils/path'
 
@@ -24,6 +25,8 @@ export default defineMetadata({
   actions: (data) => {
     data.czGit = data.adaptor === 'cz-git'
     data.gitCz = data.adaptor === 'git-cz'
+
+    $({ stdio: 'inherit' }).sync`npm pkg set scripts.cz=cz`
 
     const actions: Actions = [
       {
