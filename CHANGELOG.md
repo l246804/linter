@@ -1,5 +1,12 @@
 
 
+## [1.2.9](https://github.com/l246804/plop-generators/compare/v1.2.8...v1.2.9) (2024-07-10)
+
+
+### Chores
+
+* 🤖 update settings.json ([6e66898](https://github.com/l246804/plop-generators/commit/6e668989c8b8f0684164f82ff03ed8e17e47d62f))
+
 ## [1.2.8](https://github.com/l246804/plop-generators/compare/v1.2.7...v1.2.8) (2024-07-01)
 
 
