@@ -1,5 +1,12 @@
 
 
+## [1.2.10](https://github.com/l246804/plop-generators/compare/v1.2.9...v1.2.10) (2024-09-26)
+
+
+### Chores
+
+* 🤖 update deps ([9fd67d9](https://github.com/l246804/plop-generators/commit/9fd67d92e09537f2aacb13293b224aa50c117d40))
+
 ## [1.2.9](https://github.com/l246804/plop-generators/compare/v1.2.8...v1.2.9) (2024-07-10)
 
 
