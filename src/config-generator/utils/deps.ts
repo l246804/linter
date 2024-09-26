@@ -16,7 +16,7 @@ const DEP_VERSION_MAP: Recordable<string> = {
   'typescript': '^5',
 
   'eslint': '^9',
-  '@antfu/eslint-config': '^2',
+  '@antfu/eslint-config': '^3',
   'prettier': '^3',
 
   'release-it': '^17',
@@ -38,7 +38,7 @@ const DEP_VERSION_MAP: Recordable<string> = {
   'unbuild': '^2',
 
   'vite': '^5',
-  'vite-plugin-dts': '^3',
+  'vite-plugin-dts': '^4',
   'rollup': '^4',
 }
 
