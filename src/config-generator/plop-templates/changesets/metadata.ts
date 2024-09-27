@@ -1,8 +1,8 @@
-import { cwd } from 'node:process'
 import { resolve } from 'node:path'
+import { cwd } from 'node:process'
+import { $dir } from '@/utils/path'
 import { $ } from 'execa'
 import { defineMetadata } from '../../utils/template'
-import { $dir } from '@/utils/path'
 
 export default defineMetadata({
   name: 'changesets',

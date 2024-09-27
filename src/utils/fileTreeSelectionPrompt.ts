@@ -1,7 +1,7 @@
+import type { NodePlopAPI, PromptQuestion } from 'node-plop'
 import { sep } from 'node:path'
 import { cwd } from 'node:process'
 import FileTreeSelectionPrompt from 'inquirer-file-tree-selection-prompt'
-import type { NodePlopAPI, PromptQuestion } from 'node-plop'
 import { gray } from 'kolorist'
 
 type QuestionOptions = Partial<FileTreeSelectionPrompt['opt']>

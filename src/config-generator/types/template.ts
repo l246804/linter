@@ -1,5 +1,5 @@
-import type { ActionType, PromptQuestion } from 'node-plop'
 import type { Fn, Recordable } from '@/types/utils'
+import type { ActionType, PromptQuestion } from 'node-plop'
 
 export interface TemplateMetadata {
   name: string

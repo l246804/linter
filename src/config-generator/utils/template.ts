@@ -1,6 +1,6 @@
 import type { PromptQuestion } from 'node-plop'
-import { isBoolean, isFunction } from 'lodash-es'
 import type { TemplateMetadata } from '../types/template'
+import { isBoolean, isFunction } from 'lodash-es'
 
 export function defineMetadata(metaData: TemplateMetadata) {
   return metaData

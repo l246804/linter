@@ -1,12 +1,12 @@
 import { resolve } from 'node:path'
 import { cwd } from 'node:process'
+import { execaOpts } from '@/utils/execa'
+import logger from '@/utils/logger'
+import { $dir } from '@/utils/path'
 import { execa } from 'execa'
 import fs from 'fs-extra'
 import { loadPackageJSON } from 'local-pkg'
 import { defineMetadata } from '../../utils/template'
-import { $dir } from '@/utils/path'
-import logger from '@/utils/logger'
-import { execaOpts } from '@/utils/execa'
 
 export default defineMetadata({
   name: 'commitlint',
@@ -78,7 +78,7 @@ export default defineMetadata({
         }
         data.hasCzConfig = !!data.enums
       }
-      catch (e) {
+      catch {
         logger.warn(`Parsing "${errorFile}" failed!`)
       }
     }

@@ -1,7 +1,7 @@
 import type { NodePlopAPI } from 'node-plop'
-import { camelCase } from 'lodash-es'
 import type { GeneratorModule } from './types/generator-module'
 import type { Recordable } from './types/utils'
+import { camelCase } from 'lodash-es'
 
 export * from './generators'
 

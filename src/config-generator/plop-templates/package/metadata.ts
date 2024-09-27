@@ -1,10 +1,10 @@
 import { resolve } from 'node:path'
 import { cwd } from 'node:process'
-import { kebabCase } from 'lodash-es'
-import { $ } from 'execa'
-import { defineMetadata } from '../../utils/template'
 import { $dir } from '@/utils/path'
 import { requiredValidator } from '@/utils/prompt'
+import { $ } from 'execa'
+import { kebabCase } from 'lodash-es'
+import { defineMetadata } from '../../utils/template'
 
 export default defineMetadata({
   name: 'package',

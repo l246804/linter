@@ -1,6 +1,6 @@
 import { resolve } from 'node:path'
-import fs from 'fs-extra'
 import fg from 'fast-glob'
+import fs from 'fs-extra'
 import { distDir, srcDir } from '../internal/paths'
 
 const files = fg.globSync([

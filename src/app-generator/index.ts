@@ -1,17 +1,17 @@
-import { cwd } from 'node:process'
+import type { GeneratorModule } from '@/types/generator-module'
+import type { Recordable } from '@/types/utils'
 import { resolve } from 'node:path'
+import { cwd } from 'node:process'
 import { pathToFileURL } from 'node:url'
+import { execaOpts } from '@/utils/execa'
+import { $dir } from '@/utils/path'
+import { requiredValidator } from '@/utils/prompt'
+import { installPackage } from '@antfu/install-pkg'
+import { execaSync } from 'execa'
 import fs from 'fs-extra'
 import { red } from 'kolorist'
-import { rimrafSync } from 'rimraf'
-import { installPackage } from '@antfu/install-pkg'
 import { isObject, isString } from 'lodash-es'
-import { execaSync } from 'execa'
-import type { GeneratorModule } from '@/types/generator-module'
-import { requiredValidator } from '@/utils/prompt'
-import type { Recordable } from '@/types/utils'
-import { $dir } from '@/utils/path'
-import { execaOpts } from '@/utils/execa'
+import { rimrafSync } from 'rimraf'
 
 export interface AppGeneratorOptions {
   /**
@@ -134,7 +134,7 @@ const setup: GeneratorModule<AppGeneratorOptions> = (plop, options) => {
           try {
             manifest = await promise
           }
-          catch (e) {}
+          catch {}
           return manifest === null
         },
         validate: async (value) => {

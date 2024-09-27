@@ -1,11 +1,11 @@
-import { installPackage } from '@antfu/install-pkg'
-import { uniq } from 'lodash-es'
-import { getTemplateAnswers, getTemplatePrompts, getTemplateTypes } from './utils/template'
+import type { GeneratorModule } from '@/types/generator-module'
 import type { TemplateMetadata } from './types/template'
-import { mapDeps } from './utils/deps'
 import { ensureFunction } from '@/utils/fn'
 import logger from '@/utils/logger'
-import type { GeneratorModule } from '@/types/generator-module'
+import { installPackage } from '@antfu/install-pkg'
+import { uniq } from 'lodash-es'
+import { mapDeps } from './utils/deps'
+import { getTemplateAnswers, getTemplatePrompts, getTemplateTypes } from './utils/template'
 
 export interface ConfigGeneratorOptions {
   /**

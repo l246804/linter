@@ -1,9 +1,9 @@
+import type { Actions } from 'node-plop'
 import { resolve } from 'node:path'
 import { cwd } from 'node:process'
-import type { Actions } from 'node-plop'
+import { $dir } from '@/utils/path'
 import { $ } from 'execa'
 import { defineMetadata } from '../../utils/template'
-import { $dir } from '@/utils/path'
 
 export default defineMetadata({
   name: 'commitizen',

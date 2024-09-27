@@ -1,8 +1,8 @@
 import { resolve } from 'node:path'
 import { cwd } from 'node:process'
+import { $dir } from '@/utils/path'
 import { isPackageExists } from 'local-pkg'
 import { defineMetadata } from '../../utils/template'
-import { $dir } from '@/utils/path'
 
 export default defineMetadata({
   name: 'vite',

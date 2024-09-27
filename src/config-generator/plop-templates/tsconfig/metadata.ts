@@ -1,7 +1,7 @@
 import { resolve } from 'node:path'
 import { cwd } from 'node:process'
-import { defineMetadata } from '../../utils/template'
 import { $dir } from '@/utils/path'
+import { defineMetadata } from '../../utils/template'
 
 export default defineMetadata({
   name: 'tsconfig',
