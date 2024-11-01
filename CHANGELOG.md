@@ -1,5 +1,17 @@
 
 
+## [1.2.12](https://github.com/l246804/plop-generators/compare/v1.2.11...v1.2.12) (2024-11-01)
+
+
+### Chores
+
+* 🤖 优化 vite 模板 ([4218f0c](https://github.com/l246804/plop-generators/commit/4218f0c1ba6c38fd2035429deba2f2827b983f6b))
+
+
+### Styles
+
+* 💄 format code style ([d2733b1](https://github.com/l246804/plop-generators/commit/d2733b11b77648ce4b24ff614d78ace903ce50a4))
+
 ## [1.2.11](https://github.com/l246804/plop-generators/compare/v1.2.10...v1.2.11) (2024-09-27)
 
 
