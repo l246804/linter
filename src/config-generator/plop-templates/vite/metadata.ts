@@ -21,12 +21,19 @@ export default defineMetadata({
       default: false,
       when: () => !isPackageExists('vue'),
     },
+    {
+      type: 'confirm',
+      name: 'dts',
+      message: 'Dts?',
+      default: false,
+    },
   ],
   deps: (answers) => [
     'vite',
-    'vite-plugin-dts',
+    answers.dts && 'vite-plugin-dts',
     'typescript',
     'rollup',
+    'fast-glob',
     ...(answers.vue ? ['@vitejs/plugin-vue', '@vitejs/plugin-vue-jsx'] : []),
   ],
   actions: (data) => {

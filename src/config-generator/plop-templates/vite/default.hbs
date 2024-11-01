@@ -1,22 +1,20 @@
-import { resolve } from 'node:path'
+import type { OutputOptions } from 'rollup'
 import type { UserConfig } from 'vite'
-import { defineConfig } from 'vite'
-import Dts from 'vite-plugin-dts'
-import type { ExternalOption, OutputOptions } from 'rollup'
+import { basename, resolve } from 'node:path'
 {{#if vue}}
 import Vue from '@vitejs/plugin-vue'
 import VueJsx from '@vitejs/plugin-vue-jsx'
+{{/if}}
+import glob from 'fast-glob'
+import { defineConfig } from 'vite'
+{{#if dts}}
+import Dts from 'vite-plugin-dts'
 {{/if}}
 import pkg from './package.json'
 
 // 输出格式后缀
 const esmExt = '.js'
 const cjsExt = '.cjs'
-
-// 代码压缩
-const minify = false
-// 代码树摇
-const treeshake = true
 
 // 输出目录
 const outDir = resolve(__dirname, 'dist')
@@ -27,11 +25,23 @@ const entryFile = 'src/index'
 
 // 生成外部依赖配置
 function genExternals() {
-  const { peerDependencies = {}, dependencies = {} } = pkg as any
-  return [
-    /^node(:.+)?$/,
-    ...new Set([...Object.keys(peerDependencies), ...Object.keys(dependencies)]),
-  ].map((p) => p instanceof RegExp ? p : new RegExp(`^${p}$|^${p}/.+`)) as ExternalOption
+  interface PackageJson {
+    peerDependencies?: Record<string, string>
+    dependencies?: Record<string, string>
+    devDependencies?: Record<string, string>
+  }
+
+  const { peerDependencies = {}, dependencies = {} } = pkg as PackageJson
+  // 需要外化的依赖列表
+  const deps = new Set<string | RegExp>([...Object.keys(peerDependencies)])
+
+  // 生产依赖全部排除
+  Object.keys(dependencies).forEach((dep) => deps.add(dep))
+
+  // 移除 node 内置依赖
+  deps.add(/^node(:.+)?$/)
+
+  return [...deps].map((p) => (p instanceof RegExp ? p : new RegExp(`^${p}$|^${p}/.+`)))
 }
 
 // 生成模块输出配置
@@ -44,10 +54,14 @@ function genOutput(format: 'cjs' | 'esm') {
     // 源码根目录
     preserveModulesRoot: entryDir,
     // 入口文件名
-    entryFileNames: (info) =>
-      `${/node_modules/.test(info.name) ? info.name.split('node_modules/').at(-1)! : '[name]'}${
-        format === 'esm' ? esmExt : cjsExt
-      }`,
+    entryFileNames(info) {
+      let name = '[name]'
+      if (/node_modules/.test(info.name)) {
+        name = info.name.split('node_modules/').at(-1)!
+        name = `vendors/${name}`
+      }
+      return name + (format === 'esm' ? esmExt : cjsExt)
+    },
     // 导出模式
     exports: 'named',
   } as OutputOptions
@@ -59,9 +73,9 @@ function genUMDOutput() {
   const pkgName = pkg.name.slice(pkg.name.lastIndexOf('/') + 1)
   const name = pkgName
     .replace(/\.|_/g, '-')
-    .replace(/-(?=[0-9])/g, '')
-    .replace(/^[A-Za-z]|(?<=[0-9])[A-Za-z]/g, (m) => m.toUpperCase())
-    .replace(/-[A-Za-z]/g, (m) => m[1].toUpperCase())
+    .replace(/-(?=\d)/g, '')
+    .replace(/^[A-Z]|(?<=\d)[A-Z]/gi, (m) => m.toUpperCase())
+    .replace(/-[A-Z]/gi, (m) => m[1].toUpperCase())
 
   return {
     // 输出的代码格式
@@ -82,14 +96,13 @@ export default defineConfig(() => {
   return {
     build: {
       outDir,
-      minify,
-      sourcemap: true,
       lib: {
         entry: entryFile,
       },
       rollupOptions: {
-        treeshake,
         external: genExternals(),
+        // 避免 treeshake 时丢失 index.ts
+        input: glob.sync(`${basename(entryDir)}/**/index.ts`, { deep: 2 }),
         output: [genOutput('esm'), genOutput('cjs'){{#if umd}}, genUMDOutput(){{/if}}],
       },
     },
@@ -103,7 +116,9 @@ export default defineConfig(() => {
       Vue(),
       VueJsx(),
       {{/if}}
+      {{#if dts}}
       Dts({ include: [entryDir] }),
+      {{/if}}
     ],
   } as UserConfig
 })
