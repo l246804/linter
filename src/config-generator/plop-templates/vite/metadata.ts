@@ -28,6 +28,9 @@ export default defineMetadata({
       default: false,
     },
   ],
+  processAnswer(data) {
+    data.vue ??= true
+  },
   deps: (answers) => [
     'vite',
     answers.dts && 'vite-plugin-dts',
