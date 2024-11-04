@@ -1,5 +1,12 @@
 
 
+## [1.2.13](https://github.com/l246804/plop-generators/compare/v1.2.12...v1.2.13) (2024-11-04)
+
+
+### Bug fixes
+
+* 🐛 修复 vite 模板创建时丢失 vue 插件生成 ([7063bcd](https://github.com/l246804/plop-generators/commit/7063bcd1b5522390537dfd1fa6ae4416ec90ad66))
+
 ## [1.2.12](https://github.com/l246804/plop-generators/compare/v1.2.11...v1.2.12) (2024-11-01)
 
 
