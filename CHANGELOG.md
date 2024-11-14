@@ -1,5 +1,12 @@
 
 
+## [1.2.14](https://github.com/l246804/plop-generators/compare/v1.2.13...v1.2.14) (2024-11-14)
+
+
+### Bug fixes
+
+* 🐛 修复 app-generator 在安装依赖失败后导致无法重新还原配置文件 ([7f1f1b7](https://github.com/l246804/plop-generators/commit/7f1f1b7c78a9a4c59e0b77a9f2458c49a2e65b5f))
+
 ## [1.2.13](https://github.com/l246804/plop-generators/compare/v1.2.12...v1.2.13) (2024-11-04)
 
 
