@@ -174,12 +174,18 @@ const setup: GeneratorModule<AppGeneratorOptions> = (plop, options) => {
 
       const { removeFiles = [], dependencies = [], devDependencies = [] } = manifest
 
-      // cleanup invalid files
-      if (removeFiles.length)
-        rimrafSync(removeFiles, { glob: { cwd: cwd() } })
+      const handle = () => {
+        const files = new Set(removeFiles)
+        if (answers.initRepo) {
+          files.add('.git')
+        }
 
-      // initialize git repository
-      answers.initRepo && execaSync('git', ['init'], execaOpts)
+        // cleanup invalid files
+        files.size && rimrafSync([...files], { glob: { cwd: cwd() } })
+
+        // initialize git repository
+        answers.initRepo && execaSync('git', ['init'], execaOpts)
+      }
 
       // install dependencies
       if (dependencies.length || devDependencies.length) {
@@ -190,8 +196,16 @@ const setup: GeneratorModule<AppGeneratorOptions> = (plop, options) => {
           .finally(() => installDependencies(dependencies, false))
 
         function installDependencies(dependencies: string[], dev: boolean) {
-          return installPackage(dependencies, { cwd: cwd(), dev, packageManager, additionalArgs })
+          return installPackage(dependencies, {
+            cwd: cwd(),
+            dev,
+            packageManager,
+            additionalArgs,
+          }).then(handle)
         }
+      }
+      else {
+        handle()
       }
 
       return [
